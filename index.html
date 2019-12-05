@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dinographic</title>
+    <!-- Include Google fonts: Frijole, Open Sans, Oswald -->
+    <link href="https://fonts.googleapis.com/css?family=Frijole|Open+Sans|Oswald&display=swap" rel="stylesheet">
+    <!-- Normalize browser styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link href="app.css" rel="stylesheet">
+    <!-- Link to app.js with defer till HTML render -->
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <header>
+        <h2>Natural History Museum</h2> 
+        <h1>Dinosaurs</h1>
+        <h3>How do you compare?</h3>
+    </header>
+    <!-- Form to get user input -->
+    <form id="dino-compare">
+        <div class="form-container">
+            <p>Name:</p>
+            <input id="name" class="form-field__full" type="name" name="name">
+            <p>Height</p>
+            <label>Feet: <input id="feet" class="form-field__short" type="number" name="feet"></label>
+            <label>inches: <input id="inches" class="form-field__short" type="number" name="inches"></label>
+            <p>Weight:</p>
+            <label><input id="weight" class="form-field__full" type="number" name="weight">lbs</label>
+            <p>Diet:</p>
+            <select id="diet" class="form-field__full" name="diet">
+                <option>Herbavor</option>
+                <option>Omnivor</option>
+                <option>Carnivor</option>
+            </select>
+            <div id="btn">Compare Me!</div>
+        </div>
+    </form>
+    <!-- .grid to attach tiles to -->
+    <main id="grid"></main>
+    <footer>
+        <!-- Include information source -->
+        <p class="fine-print">Data Sourced from <a href="https://www.wikipedia.org/">Wikipedia.org</a>, all numbers are approximations.</p>
+    </footer>
+</body>
+</html>

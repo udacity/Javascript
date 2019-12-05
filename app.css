@@ -1,0 +1,174 @@
+/* General Styles */
+body {
+    background: rgb(249, 71, 59);
+    background: linear-gradient(0deg, rgb(255, 118, 108) 0%, rgb(255, 255, 40) 100%);
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    min-height: 100vh;
+}
+
+h1 {
+    margin: 0;
+    font-family: 'Frijole', cursive;
+    font-size: 3em;
+    font-weight: 400;
+}
+
+h2,
+h3 {
+    font-family: 'Oswald', sans-serif;
+}
+
+@media (min-width: 650px) {
+    h1 {
+        font-size: 5em;
+    }
+}
+
+@media (min-width: 920px) {
+    h1 {
+        font-size: 8em;
+    }
+}
+
+p {
+    font-weight: 100;
+}
+
+/* Grid Styles */
+#grid {
+    background: #fff url(images/tracks.png) no-repeat;
+    background-size: cover;
+    display: flex;
+    margin: 2em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    flex-wrap: wrap;
+}
+
+.grid-item {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.grid-item:nth-child(1){
+    background: #009687f5;
+}
+
+.grid-item:nth-child(2){
+    background: #ff5622f5;
+}
+
+.grid-item:nth-child(3){
+    background: #00bbd4fa;
+}
+
+.grid-item:nth-child(4){
+    background: #ff9900f9;
+}
+
+.grid-item:nth-child(5){
+    background: #269b24f9;
+}
+
+.grid-item:nth-child(6){
+    background: #e91e62fa;
+}
+
+.grid-item:nth-child(7){
+    background: #683ab7fa;
+}
+
+.grid-item:nth-child(8){
+    background: #8bc34af9;
+}
+
+.grid-item:nth-child(9){
+    background: #5677fcfa;
+}
+
+@media (min-width: 550px) {
+    #grid div {
+        width: calc(100% / 3);
+    }
+}
+
+.grid-item h3 {
+    font-size: 2em;
+    color: #eee;
+}
+
+.grid-item img {
+    max-width: 100%;
+    padding-bottom: 1em;
+}
+
+.grid-item p {
+    background: rgba(000,000,000, .3);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0.8em 0.8em 1.8em;
+    margin:0;
+    box-sizing: border-box;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Form Styles */
+.form-container {
+    background: #eee;
+    padding: 1.3em;
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form p {
+    margin-bottom: 0.3em;
+    font-size: 1.3em;
+    font-weight: 600;
+    font-family: 'Oswald', sans-serif;
+}
+
+input {
+    padding: 0.7em;
+    background: #fff;
+    border: 0;
+}
+
+.form-field__short {
+    width: 25%;
+    margin-right: 3%;
+    box-sizing: border-box;
+}
+
+.form-field__full {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+select {
+    display: block;
+}
+
+#btn {
+    display: inline-block;
+    background: #ccc;
+    padding: 0.8em;
+    margin: 1.2em auto;
+    transition: ease 0.3s all;
+}
+
+#btn:hover {
+    background: #777;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Footer */
+.fine-print {
+    display: block;
+    font-size: 0.7em;
+}
