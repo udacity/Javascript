@@ -1,7 +1,7 @@
 /* General Styles */
 body {
-    background: rgb(249, 71, 59);
-    background: linear-gradient(0deg, rgb(255, 118, 108) 0%, rgb(255, 255, 40) 100%);
+    background: rgb(111, 208, 224);
+    background: linear-gradient(0deg,rgb(111, 208, 224) 0%, rgb(171, 228, 167) 100%);
     font-family: 'Open Sans', sans-serif;
     text-align: center;
     min-height: 100vh;
@@ -56,35 +56,35 @@ p {
 }
 
 .grid-item:nth-child(2){
-    background: #ff5622f5;
+    background: #dc7657f5;
 }
 
 .grid-item:nth-child(3){
-    background: #00bbd4fa;
+    background: #4bb3c1fa;
 }
 
 .grid-item:nth-child(4){
-    background: #ff9900f9;
+    background: #fac069f9;
 }
 
 .grid-item:nth-child(5){
-    background: #269b24f9;
+    background: #67a866f9;
 }
 
 .grid-item:nth-child(6){
-    background: #e91e62fa;
+    background: #b94169fa;
 }
 
 .grid-item:nth-child(7){
-    background: #683ab7fa;
+    background: #7f62b3fa;
 }
 
 .grid-item:nth-child(8){
-    background: #8bc34af9;
+    background: #9fc376f9;
 }
 
 .grid-item:nth-child(9){
-    background: #5677fcfa;
+    background: #677bcbfa;
 }
 
 @media (min-width: 550px) {
