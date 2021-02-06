@@ -1,4 +1,6 @@
 
+const tiles = [];
+
 // fetch Dino JSON Data
 const fetchJSONData = () => {
     return fetch('./dino.json')
@@ -16,7 +18,18 @@ function Dino(species, weight, height, diet, where, when, fact) {
     this.fact = fact;
     }
 
+function Bird(weight, height, diet, where, when, fact) {
+    Dino.call(this, weight, height, diet, where, when, fact);
+}
+
     // Create Dino Objects
+const createDinos = () => {
+    dataSet.dinos.forEach((obj) => {
+        const dino = new Dino(obj.species, obj.weight, obj.height, obj.diet, obj.where, obj.when, obj.fact);
+        tiles.push(dino);
+    });
+    console.log('tiles', tiles);
+}
 
 
     // Create Human Object
@@ -39,12 +52,19 @@ function getHumanData() {
     return human;
 }
 
+const dataSet = {}
+
 const btn = document.getElementById('btn');
 btn.addEventListener('click', function() {
     // Use IIFE to get human data from form
+    const humanData = getHumanData();
+    console.log(humanData);
     fetchJSONData()
-        .then(data => console.log(data));
-
+        .then(data => {
+            dataSet.dinos = data.Dinos;
+            createDinos();
+        });
+    console.log('dataset', dataSet);
 })
 
     // Create Dino Compare Method 1
