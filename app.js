@@ -24,14 +24,40 @@ function Bird(species, weight, height, diet, where, when, fact) {
 
     // Create Dino Compare Method 1
     // NOTE: Weight in JSON file is in lbs, height in inches.
-Dino.prototype.compareWeight = function (humanWeight)  {
+Dino.prototype.compareDiet = function (humanDiet)  {
+    let fact = '';
+    if (humanDiet !== this.diet) {
+        fact = `${this.species} are ${this.diet}, therefore you follow different diets.`;
+    } else if (humanDiet === this.diet) {
+        fact = `You and  ${this.species} follow the same diet - ${this.diet}.`;
+    }
+    this.facts.push(fact);
+}
+
+    // Create Dino Compare Method 2
+    // NOTE: Weight in JSON file is in lbs, height in inches.
+Dino.prototype.compareHeight = function (humanHeight) {
+    let fact = '';
+    if (humanHeight > this.height) {
+        fact = `Guess what? You're taller than ${this.species}! ${this.species} are ${this.height} inches tall`;
+    } else if (humanHeight < this.height) {
+        fact = `You've got some growing to do! At ${this.height} inches, ${this.species} are taller than you.`;
+    } else if (humanHeight === this.height) {
+        fact = `${this.species} and you are the same height - ${this.height} inches!`;
+    }
+    this.facts.push(fact);
+}
+
+    // Create Dino Compare Method 3
+    // NOTE: Weight in JSON file is in lbs, height in inches.
+Dino.prototype.compareWeight = function (humanWeight) {
     let fact = '';
     if (humanWeight > this.weight) {
-        fact = `You weigh more than ${this.species}!`;
+        fact = `You weigh more than ${this.species}! They weigh about ${this.weight} lbs.`;
     } else if (humanWeight < this.weight) {
-        fact = `No surprises here - ${this.species} weighs more than you!`;
-    } else if (humanWeight < this.weight) {
-        fact = `Wow! You and ${this.species} actually weigh the same.`;
+        fact = `${this.species} are heavier than you at ${this.weight} lbs. Go ahead and eat that pizza tonight!`;
+    } else if (humanWeight === this.weight) {
+        fact = `${this.species} and you are the same approximate weight - ${this.weight} lbs.`;
     }
     this.facts.push(fact);
 }
@@ -45,6 +71,8 @@ const createDinos = () => {
         } else {
             const dino = new Dino(obj.species, obj.weight, obj.height, obj.diet, obj.where, obj.when, obj.fact);
             dino.compareWeight(dataSet.humanData.weight);
+            dino.compareHeight(dataSet.humanData.height);
+            dino.compareDiet(dataSet.humanData.diet);
             tiles.push(dino);
         }
     });
@@ -68,7 +96,7 @@ function getHumanData() {
     const weight = document.getElementById('weight').value;
     const diet = document.getElementById('diet').value;
     const height = (heightFeet * 12) + heightInches;
-    const human = new Human(name, weight, height, diet);
+    const human = new Human(name, weight, height, diet.toLowerCase());
     return human;
 }
 
@@ -85,16 +113,6 @@ btn.addEventListener('click', function() {
         });
 
 })
-
-
-
-
-    // Create Dino Compare Method 2
-    // NOTE: Weight in JSON file is in lbs, height in inches.
-
-
-    // Create Dino Compare Method 3
-    // NOTE: Weight in JSON file is in lbs, height in inches.
 
 
     // Generate Tiles for each Dino in Array
