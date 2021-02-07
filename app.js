@@ -15,18 +15,38 @@ function Dino(species, weight, height, diet, where, when, fact) {
     this.diet = diet;
     this.where = where;
     this.when = when;
-    this.fact = fact;
+    this.facts = [fact];
     }
 
-function Bird(weight, height, diet, where, when, fact) {
-    Dino.call(this, weight, height, diet, where, when, fact);
+function Bird(species, weight, height, diet, where, when, fact) {
+    Dino.call(this, species, weight, height, diet, where, when, fact);
+}
+
+    // Create Dino Compare Method 1
+    // NOTE: Weight in JSON file is in lbs, height in inches.
+Dino.prototype.compareWeight = function (humanWeight)  {
+    let fact = '';
+    if (humanWeight > this.weight) {
+        fact = `You weigh more than ${this.species}!`;
+    } else if (humanWeight < this.weight) {
+        fact = `No surprises here - ${this.species} weighs more than you!`;
+    } else if (humanWeight < this.weight) {
+        fact = `Wow! You and ${this.species} actually weigh the same.`;
+    }
+    this.facts.push(fact);
 }
 
     // Create Dino Objects
 const createDinos = () => {
     dataSet.dinos.forEach((obj) => {
-        const dino = new Dino(obj.species, obj.weight, obj.height, obj.diet, obj.where, obj.when, obj.fact);
-        tiles.push(dino);
+        if (obj.species === 'Pigeon') {
+            const pigeon = new Bird(obj.species, obj.weight, obj.height, obj.diet, obj.where, obj.when, obj.fact);
+            tiles.push(pigeon);
+        } else {
+            const dino = new Dino(obj.species, obj.weight, obj.height, obj.diet, obj.where, obj.when, obj.fact);
+            dino.compareWeight(dataSet.humanData.weight);
+            tiles.push(dino);
+        }
     });
     console.log('tiles', tiles);
 }
@@ -56,19 +76,17 @@ const dataSet = {}
 
 const btn = document.getElementById('btn');
 btn.addEventListener('click', function() {
-    // Use IIFE to get human data from form
-    const humanData = getHumanData();
-    console.log(humanData);
+    dataSet.humanData = getHumanData();
     fetchJSONData()
         .then(data => {
             dataSet.dinos = data.Dinos;
             createDinos();
+            console.log('dataset', dataSet);
         });
-    console.log('dataset', dataSet);
+
 })
 
-    // Create Dino Compare Method 1
-    // NOTE: Weight in JSON file is in lbs, height in inches.
+
 
 
     // Create Dino Compare Method 2
