@@ -112,7 +112,7 @@ const addTilesToDOM = () => {
     let grid = document.getElementById('grid');
     tiles.forEach((item, index) => {
         let randomIndex = item.facts && Math.floor(Math.random() * item.facts.length);
-        let gridElm = '<div class="grid-item" data-key="' + index + '">' +
+        let gridElm = '<div class="grid-item">' +
             '<h3>' + (item.name ? item.name : item.species) + '</h3>' +
             '<img src="images/' + item.species + '.png" alt="" />' +
             getFact(item, randomIndex) +
