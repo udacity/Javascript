@@ -7,7 +7,7 @@ const fetchJSONData = () => {
             .then(response => response.json())
 };
 
-    // Create Dino Constructor
+// Create Dino Constructor
 function Dino(species, weight, height, diet, where, when, fact) {
     this.species = species;
     this.weight = weight;
@@ -69,7 +69,7 @@ Dino.prototype.additionalFacts = function() {
     this.facts.push(fact1, fact2);
 }
 
-    // Create Dino Objects
+// Create Dino Objects
 const createDinos = () => {
     dataSet.dinos.forEach((obj) => {
         if (obj.species === 'Pigeon') {
@@ -86,7 +86,7 @@ const createDinos = () => {
     });
 }
 
-    // Create Human Object
+// Create Human Object
 function Human(name, weight, height, diet) {
     this.name = name;
     this.species = 'human';
@@ -106,7 +106,7 @@ function getHumanData() {
     return human;
 }
 
-     // Add tiles to DOM
+// Add tiles to DOM
 const addTilesToDOM = () => {
     let gridTiles = "";
     let grid = document.getElementById('grid');
@@ -126,7 +126,7 @@ const addTilesToDOM = () => {
     }
 };
 
-    // Remove form from screen
+// Remove form from screen
 const hideForm = () => {
     let form = document.getElementById('dino-compare');
     form.style.display = 'none';
