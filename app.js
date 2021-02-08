@@ -1,4 +1,4 @@
-
+const dataSet = {};
 const tiles = [];
 
 // fetch Dino JSON Data
@@ -62,6 +62,13 @@ Dino.prototype.compareWeight = function (humanWeight) {
     this.facts.push(fact);
 }
 
+// Create additional facts
+Dino.prototype.additionalFacts = function() {
+    const fact1 = `${this.species} lived in ${this.where}.`;
+    const fact2 = `${this.species} lived during ${this.when}.`;
+    this.facts.push(fact1, fact2);
+}
+
     // Create Dino Objects
 const createDinos = () => {
     dataSet.dinos.forEach((obj) => {
@@ -73,16 +80,16 @@ const createDinos = () => {
             dino.compareWeight(dataSet.humanData.weight);
             dino.compareHeight(dataSet.humanData.height);
             dino.compareDiet(dataSet.humanData.diet);
+            dino.additionalFacts();
             tiles.push(dino);
         }
     });
 }
 
-
     // Create Human Object
 function Human(name, weight, height, diet) {
     this.name = name;
-    this.species = 'Human';
+    this.species = 'human';
     this.weight = weight;
     this.height = height;
     this.diet = diet;
@@ -99,27 +106,42 @@ function getHumanData() {
     return human;
 }
 
-const dataSet = {}
+     // Add tiles to DOM
+const addTilesToDOM = () => {
+    let gridTiles = "";
+    let grid = document.getElementById('grid');
+    tiles.forEach((item, index) => {
+        let randomIndex = item.facts && Math.floor(Math.random() * item.facts.length);
+        let gridElm = '<div class="grid-item" data-key="' + index + '">' +
+            '<h3>' + (item.name ? item.name : item.species) + '</h3>' +
+            '<img src="images/' + item.species + '.png" alt="" />' +
+            getFact(item, randomIndex) +
+            '</div>';
+        gridTiles += gridElm;
+    });
+    grid.innerHTML = gridTiles;
 
+    function getFact(item, randomIndex) {
+        return item.facts ? ("<p>" + item.facts[randomIndex] + "</p>") : "";
+    }
+};
+
+    // Remove form from screen
+const hideForm = () => {
+    let form = document.getElementById('dino-compare');
+    form.style.display = 'none';
+};
+
+// On button click, prepare and display infographic
 const btn = document.getElementById('btn');
 btn.addEventListener('click', function() {
     dataSet.humanData = getHumanData();
-    // tiles.splice(4, 0, dataSet.humanData);
     fetchJSONData()
         .then(data => {
             dataSet.dinos = data.Dinos;
             createDinos();
             tiles.splice(4, 0, dataSet.humanData);
-            console.log('dataset', dataSet);
+            addTilesToDOM();
+            hideForm();
         });
-    console.log('tiles', tiles);
 })
-
-    // Generate Tiles for each Dino in Array
-
-        // Add tiles to DOM
-
-    // Remove form from screen
-
-
-// On button click, prepare and display infographic
