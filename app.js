@@ -76,7 +76,6 @@ const createDinos = () => {
             tiles.push(dino);
         }
     });
-    console.log('tiles', tiles);
 }
 
 
@@ -105,15 +104,16 @@ const dataSet = {}
 const btn = document.getElementById('btn');
 btn.addEventListener('click', function() {
     dataSet.humanData = getHumanData();
+    // tiles.splice(4, 0, dataSet.humanData);
     fetchJSONData()
         .then(data => {
             dataSet.dinos = data.Dinos;
             createDinos();
+            tiles.splice(4, 0, dataSet.humanData);
             console.log('dataset', dataSet);
         });
-
+    console.log('tiles', tiles);
 })
-
 
     // Generate Tiles for each Dino in Array
 
