@@ -71,8 +71,7 @@ button.addEventListener('click', function(human){
   console.log(human);
   document.forms[0].reset();
   
-  console.log(human);
-  document.forms[0].reset();
+ 
 
  //ref: https://knowledge.udacity.com/questions/350113
  // ref : https://www.youtube.com/watch?v=NxVCq4p0Kb0
