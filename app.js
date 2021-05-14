@@ -1,11 +1,24 @@
-function displayInfo() {
+async function displayGrid() {
     // Load data from Dino.json
-    fetch("https://api.jsonbin.io/b/609ddee8ed60487e5bb4941e")
-	.then(response => response.json())
-	.then(data => console.log(data));
+    const url = 'https://api.jsonbin.io/b/609ddee8ed60487e5bb4941e';
+    let data = null;
+    try {
+        const response = await fetch(url);
+        data = await response.json();
+    } catch (error) {
+        console.log(error);
+    }
 
     // Create Dino Constructor
-	
+    function Dino(dino) {
+        this.species = dino.species;
+        this.weight = dino.weight;
+        this.height = dino.height;
+        this.diet = dino.diet;
+        this.where = dino.where;
+        this.when = dino.when;
+        this.fact = dino.fac;
+    }
 
     // Create Dino Objects
 
@@ -37,5 +50,5 @@ function displayInfo() {
 // On button click, prepare and display infographic
 var button = document.getElementById('btn');
 button.onclick = function () {
-    displayInfo();
+    displayGrid();
 }
