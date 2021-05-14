@@ -1,6 +1,11 @@
+function displayInfo() {
+    // Load data from Dino.json
+    fetch("https://api.jsonbin.io/b/609ddee8ed60487e5bb4941e")
+	.then(response => response.json())
+	.then(data => console.log(data));
 
     // Create Dino Constructor
-
+	
 
     // Create Dino Objects
 
@@ -27,6 +32,10 @@
         // Add tiles to DOM
 
     // Remove form from screen
-
+}
 
 // On button click, prepare and display infographic
+var button = document.getElementById('btn');
+button.onclick = function () {
+    displayInfo();
+}
