@@ -53,8 +53,6 @@ async function displayGrid() {
         dinos.push(newDino);
     });
 
-    console.log(dinos);
-
     // Create Dino Compare Method 1
     // NOTE: Weight in JSON file is in lbs, height in inches. 
     function compareName(dinoName, humanName) {
@@ -87,10 +85,33 @@ async function displayGrid() {
     }
 
     // Generate Tiles for each Dino in Array
-  
-        // Add tiles to DOM
+    (function generateTiles() {
+        dinos.forEach(function (dino) {
+            const div = document.createElement('div');
+            div.className = 'grid-item';
+
+            const h3 = document.createElement('h3');
+            h3.textContent = dino.species;
+            div.appendChild(h3);
+
+            const img = document.createElement('img');
+            img.src = `images/${dino.species}.png`;
+            div.appendChild(img);
+
+            const p = document.createElement('p');
+            p.textContent = dino.facts[0];
+            div.appendChild(p); 
+
+            // Add tiles to DOM
+            document.getElementById('grid').appendChild(div);
+        });
+        
+    })();
 
     // Remove form from screen
+    (function removeForm() {
+        document.getElementById('dino-compare').innerHTML = '';
+    })();
 }
 
 // On button click, prepare and display infographic
