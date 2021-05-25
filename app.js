@@ -89,35 +89,58 @@ async function displayGrid() {
         return Math.floor(Math.random() * max);
     }
 
+    // Generate human tile
+    function generateHumanTile() {
+        const div = document.createElement('div');
+        div.className = 'grid-item';
+
+        const h3 = document.createElement('h3');
+        h3.textContent = human.name;
+        div.appendChild(h3);
+
+        const img = document.createElement('img');
+        img.src = 'images/human.png';
+        div.appendChild(img);
+
+        // Add tile to DOM
+        document.getElementById('grid').appendChild(div);
+    }
+
+    // Remove form from screen
+    (function removeForm() {
+        document.getElementById('dino-compare').innerHTML = '';
+    })();
+
     // Generate Tiles for each Dino in Array
     (function generateTiles() {
-        dinos.forEach(function (dino) {
+        dinos.forEach(function (dino, i) {
             const div = document.createElement('div');
             div.className = 'grid-item';
 
             const h3 = document.createElement('h3');
             h3.textContent = dino.species;
             div.appendChild(h3);
+            
 
             const img = document.createElement('img');
             img.src = `images/${dino.species}.png`;
             div.appendChild(img);
 
             const p = document.createElement('p');
-            var randomInt = 0;
-            if (dino.species != 'Pigeon') randomInt = getRandomInt(5);
-            p.textContent = dino.facts[randomInt];
-            div.appendChild(p); 
+            if (dino.species != 'Pigeon') {
+                const randomInt = getRandomInt(5);
+                p.textContent = dino.facts[randomInt];
+            } else {
+                p.textContent = 'All birds are Dinosaurs.';
+            }
+            div.appendChild(p);
+
+            if(i===4) generateHumanTile();
 
             // Add tiles to DOM
             document.getElementById('grid').appendChild(div);
         });
         
-    })();
-
-    // Remove form from screen
-    (function removeForm() {
-        document.getElementById('dino-compare').innerHTML = '';
     })();
 }
 
