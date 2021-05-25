@@ -84,6 +84,11 @@ async function displayGrid() {
         }
     }
 
+    // Generate random integer
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+
     // Generate Tiles for each Dino in Array
     (function generateTiles() {
         dinos.forEach(function (dino) {
@@ -99,7 +104,9 @@ async function displayGrid() {
             div.appendChild(img);
 
             const p = document.createElement('p');
-            p.textContent = dino.facts[0];
+            var randomInt = 0;
+            if (dino.species != 'Pigeon') randomInt = getRandomInt(5);
+            p.textContent = dino.facts[randomInt];
             div.appendChild(p); 
 
             // Add tiles to DOM
