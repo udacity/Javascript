@@ -143,9 +143,3 @@ async function displayGrid() {
         
     })();
 }
-
-// On button click, prepare and display infographic
-var button = document.getElementById('btn');
-button.onclick = function () {
-    displayGrid();
-}
