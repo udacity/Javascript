@@ -1,4 +1,3 @@
-
 // Create Dino Constructor
 function Dino(species, weight, height, diet, where, when, fact) {
     this.species = species;
@@ -11,15 +10,16 @@ function Dino(species, weight, height, diet, where, when, fact) {
 }
 
 // Create Dino Objects
-var tricera = new Dino("triceratops", 13000, 114, "herbavor", "North America", "Late Cretaceous", "First discovered in 1889 by Othniel Charles Marsh.");
-var tyranosaurusRex = new Dino("tyrannosaurus rex", 11905, 144, "Carnivor", "North America", "Late Cretaceous", "The largest known skull measures in at 5 feet long.");
-var ankylo = new Dino("anklyosaurus", 10500, 55, "herbavor", "North America", "Late Cretaceous", "Ankylosaurus survived for approximately 135 million years.");
-var brachio = new Dino("brachiosaurus", 70000, 372, "herbavor", "North America", "Late Jurassic", "An asteroid was named 9954 Brachiosaurus in 1991.");
-var stego = new Dino("stegosaurus", 11600, 79, "herbavor", "North Americca, Europe, Asia", "Late Jurassic to Early Cretaceous", "The Stegosaurus had between 17 and 22 separate places and flat spines.");
-var elasmo = new Dino("elasmosaurus", 16000, 59, "carnivor", "North America", "Late Cretaceous", "Elasmosaurus was a marine reptile first discovered in Kansas.");
-var ptera = new Dino("pteranodon", 44, 20, "carnivor", "North America", "Late Cretaceous", "Actually a flying reptile, the Pteranodon is not a dinosaur.");
-var pigeon = new Dino("pigeon", 0.5, 9, "herbavor", "World Wide", "Holocene", "All birds are living dinosaurs.");
-var dinoArray = [tricera, tyranosaurusRex, ankylo, brachio, stego, elasmo, ptera, pigeon];
+let tricera = new Dino("triceratops", 13000, 114, "herbavor", "North America", "Late Cretaceous", "First discovered in 1889 by Othniel Charles Marsh.");
+let tyranosaurusRex = new Dino("tyrannosaurus rex", 11905, 144, "Carnivor", "North America", "Late Cretaceous", "The largest known skull measures in at 5 feet long.");
+let ankylo = new Dino("anklyosaurus", 10500, 55, "herbavor", "North America", "Late Cretaceous", "Ankylosaurus survived for approximately 135 million years.");
+let brachio = new Dino("brachiosaurus", 70000, 372, "herbavor", "North America", "Late Jurassic", "An asteroid was named 9954 Brachiosaurus in 1991.");
+let stego = new Dino("stegosaurus", 11600, 79, "herbavor", "North Americca, Europe, Asia", "Late Jurassic to Early Cretaceous", "The Stegosaurus had between 17 and 22 separate places and flat spines.");
+let elasmo = new Dino("elasmosaurus", 16000, 59, "carnivor", "North America", "Late Cretaceous", "Elasmosaurus was a marine reptile first discovered in Kansas.");
+let ptera = new Dino("pteranodon", 44, 20, "carnivor", "North America", "Late Cretaceous", "Actually a flying reptile, the Pteranodon is not a dinosaur.");
+let pigeon = new Dino("pigeon", 0.5, 9, "herbavor", "World Wide", "Holocene", "All birds are living dinosaurs.");
+let dinoArray = [tricera, tyranosaurusRex, ankylo, brachio, stego, elasmo, ptera, pigeon];
+
 // Create Human Object
 // Use IIFE to get human data from form
 function makeHumanData () {
@@ -32,25 +32,26 @@ function makeHumanData () {
         });
     })();   
 }
-humanData = {}
+humanData = {};
+
 // Create Dino Compare Method 1
 // NOTE: Weight in JSON file is in lbs, height in inches. 
 Dino.prototype.weightCompare = function () {
-    var compareWeight = this.weight - humanData.weight;
+    let compareWeight = this.weight - humanData.weight;
     return "This dinosaur is " + compareWeight + " pounds heavier than you.";
 };
+
 // Create Dino Compare Method 2
 // NOTE: Weight in JSON file is in lbs, height in inches.
 Dino.prototype.heightCompare = function () {
-    var compareHeight = this.height - humanData.height;
+    let compareHeight = this.height - humanData.height;
     return "This dinosaur is " + compareHeight + " inches taller than you";
-}
-
+};
 
 // Create Dino Compare Method 3
 // NOTE: Weight in JSON file is in lbs, height in inches.
 Dino.prototype.dietCompare = function () {
-    var compareDiet;
+    let compareDiet;
     if (Dino.diet === humanData.diet) {
         compareDiet = "Your diet is the same with this dinosaur";
         return compareDiet;
@@ -59,13 +60,13 @@ Dino.prototype.dietCompare = function () {
         compareDiet = "Your diet is different from this dinosaur";
         return compareDiet;
     }
-}
+};
 
 // Generate Tiles for each Dino in Array
 function getTiles() {
-    var newArray = dinoArray.map(function (elem) {
-        num = Math.floor(Math.random() * 6);
-        var fact;
+    return dinoArray.map(function (elem) {
+        let num = Math.floor(Math.random() * 6);
+        let fact;
         switch (num) {
             case 0:
                 fact = elem.weightCompare();
@@ -89,22 +90,18 @@ function getTiles() {
             f: fact,
             name: elem.species,
             png: "images/" + elem.species + ".png"
-        }
-    })
-    console.log(newArray);
-    return newArray;
+        };
+    });
 }
 
 function addingTiles() {
     humanData = makeHumanData();
-    newArray = getTiles();
-    var humanTile = {
+    let newArray = getTiles();
+    let humanTile = {
         name: humanData.name,
         png: "images/human.png"
-    }
+    };
     newArray.splice(newArray.length / 2, 0, humanTile);
-    
-
     for (let i = 0; i < newArray.length; i++) {
         let til = document.createElement('div');
         const head = document.createElement('h3');
@@ -122,19 +119,20 @@ function addingTiles() {
             til.append(underline);
         }
         til.className = "grid-item";
-        grid = document.getElementById("grid");
+        const grid = document.getElementById("grid");
         grid.append(til);
     }
 }
+
 // Remove form from screen
 function formRemove() {
     let form = document.getElementById("dino-compare");
     form.remove();
 }
+
 // On button click, prepare and display inforgraphic
-button = document.getElementById("btn");
+const button = document.getElementById("btn");
 button.onclick = function () {
     addingTiles();
     formRemove();
 }
-
