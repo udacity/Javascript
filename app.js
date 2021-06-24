@@ -5,8 +5,8 @@ function Dino(species, weight, height, diet, where, when, fact) {
     this.weight = weight;
     this.height = height;
     this.diet = diet;
-    this.where = where;
-    this.when = when;
+    this.where = "This dinosaur lived in " + where;
+    this.when = "This dinosaur lived in the " + when + " time period";
     this.fact = fact;
 }
 
@@ -26,8 +26,8 @@ function makeHumanData () {
     return (function () {
         return Object.assign({}, {
             name: document.getElementById("name").value,
-            height: (document.getElementById("feet").value * 12) + document.getElementById("inches").value,
-            weight: document.getElementById("weight").value,
+            height: (Number(document.getElementById("feet").value) * 12) + Number(document.getElementById("inches").value),
+            weight: Number(document.getElementById("weight").value),
             diet: document.getElementById("diet").value
         });
     })();   
@@ -37,13 +37,13 @@ humanData = {}
 // NOTE: Weight in JSON file is in lbs, height in inches. 
 Dino.prototype.weightCompare = function () {
     var compareWeight = this.weight - humanData.weight;
-    return compareWeight;
+    return "This dinosaur is " + compareWeight + " pounds heavier than you.";
 };
 // Create Dino Compare Method 2
 // NOTE: Weight in JSON file is in lbs, height in inches.
 Dino.prototype.heightCompare = function () {
     var compareHeight = this.height - humanData.height;
-    return compareHeight;
+    return "This dinosaur is " + compareHeight + " inches taller than you";
 }
 
 
@@ -51,7 +51,7 @@ Dino.prototype.heightCompare = function () {
 // NOTE: Weight in JSON file is in lbs, height in inches.
 Dino.prototype.dietCompare = function () {
     var compareDiet;
-    if (Dino.diet == humanData.diet) {
+    if (Dino.diet === humanData.diet) {
         compareDiet = "Your diet is the same with this dinosaur";
         return compareDiet;
     }
@@ -62,38 +62,42 @@ Dino.prototype.dietCompare = function () {
 }
 
 // Generate Tiles for each Dino in Array
-var newArray = dinoArray.map(function (elem) {
-    num = Math.floor(Math.random() * 6);
-    var fact;
-    switch (num) {
-        case 0:
-            fact = elem.weightCompare();
-            break;
-        case 1:
-            fact = elem.heightCompare();
-            break;
-        case 2:
-            fact = elem.dietCompare();
-            break;
-        case 3:
-            fact = elem.fact;
-            break;
-        case 4:
-            fact = elem.where;
-            break;
-        case 5:
-            fact = elem.when;
-    }
-    return dinoTile = {
-        f: fact,
-        name: elem.species,
-        png: "images/" + elem.species + ".png"
-    }
-})
-console.log(newArray);
+function getTiles() {
+    var newArray = dinoArray.map(function (elem) {
+        num = Math.floor(Math.random() * 6);
+        var fact;
+        switch (num) {
+            case 0:
+                fact = elem.weightCompare();
+                break;
+            case 1:
+                fact = elem.heightCompare();
+                break;
+            case 2:
+                fact = elem.dietCompare();
+                break;
+            case 3:
+                fact = elem.fact;
+                break;
+            case 4:
+                fact = elem.where;
+                break;
+            case 5:
+                fact = elem.when;
+        }
+        return dinoTile = {
+            f: fact,
+            name: elem.species,
+            png: "images/" + elem.species + ".png"
+        }
+    })
+    console.log(newArray);
+    return newArray;
+}
 
 function addingTiles() {
     humanData = makeHumanData();
+    newArray = getTiles();
     var humanTile = {
         name: humanData.name,
         png: "images/human.png"
