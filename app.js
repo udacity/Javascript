@@ -12,7 +12,9 @@ function Dinosaur(dinoData) {
 // Create Human Constructor
 function Human(humanData) {
   this.name = humanData.name;
-  this.height = humanData.height;
+  this.feet = humanData.feet;
+  this.inches = humanData.inches;
+  this.height = `${this.feet}" ${this.inches}'`;
   this.weight = humanData.weight;
   this.diet = humanData.diet;
 }
@@ -22,7 +24,26 @@ function Human(humanData) {
 // Create Human Object
 
 // Use IIFE to get human data from form
-const getHumanData = () => {};
+const createHumanObject = () =>
+  (function () {
+    const name = document.getElementById("name").value;
+    const feet = document.getElementById("feet").value;
+    const inches = document.getElementById("inches").value;
+    const weight = document.getElementById("weight").value;
+    const diet = document.getElementById("diet").value;
+
+    const formObject = {
+      name: name,
+      feet: feet,
+      inches: inches,
+      weight: weight,
+      diet: diet,
+    };
+
+    //BEFLORE TODO: Need to extract values from form and create new object
+    // BEFLORE TODO (cont'd): Then, add new object in new Human call
+    return new Human(formObject);
+  })();
 
 // Create Dino Compare Method 1
 // NOTE: Weight in JSON file is in lbs, height in inches.
@@ -42,6 +63,9 @@ const getHumanData = () => {};
 // On button click, prepare and display infographic
 const compareButtonHandler = (event) => {
   console.log("Button was clicked");
+
+  const humanObject = createHumanObject();
+  console.log(humanObject);
 };
 const compareButton = document.getElementById("btn");
 compareButton.addEventListener("click", compareButtonHandler);
