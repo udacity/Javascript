@@ -23,8 +23,12 @@ function Human(humanData) {
 
 // Create Human Object
 
+const createHumanObject = (formData) => {
+  return new Human(formData);
+};
+
 // Use IIFE to get human data from form
-const createHumanObject = () =>
+const getFormData = () =>
   (function () {
     const name = document.getElementById("name").value;
     const feet = document.getElementById("feet").value;
@@ -32,17 +36,13 @@ const createHumanObject = () =>
     const weight = document.getElementById("weight").value;
     const diet = document.getElementById("diet").value;
 
-    const formObject = {
+    return {
       name: name,
       feet: feet,
       inches: inches,
       weight: weight,
       diet: diet,
     };
-
-    //BEFLORE TODO: Need to extract values from form and create new object
-    // BEFLORE TODO (cont'd): Then, add new object in new Human call
-    return new Human(formObject);
   })();
 
 // Create Dino Compare Method 1
@@ -64,7 +64,7 @@ const createHumanObject = () =>
 const compareButtonHandler = (event) => {
   console.log("Button was clicked");
 
-  const humanObject = createHumanObject();
+  const humanObject = createHumanObject(getFormData());
   console.log(humanObject);
 };
 const compareButton = document.getElementById("btn");
