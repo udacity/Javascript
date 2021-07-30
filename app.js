@@ -1,13 +1,15 @@
-
 // Create Dino Constructor
-
 function Dinosaur(dinoData) {
     this.species = dinoData.species;
+    this.weight = dinoData.weight;
+    this.height = dinoData.height;
+    this.diet = dinoData.diet;
+    this.where = dinoData.where;
+    this.when = dinoData.when;
+    this.fact = dinoData.fact;
 }
 
-
     // Create Dino Objects
-
 
     // Create Human Object
 
