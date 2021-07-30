@@ -9,9 +9,18 @@ function Dinosaur(dinoData) {
     this.fact = dinoData.fact;
 }
 
+// Create Human Constructor
+function Human(humanData) {
+    this.name = humanData.name;
+    this.height = humanData.height;
+    this.weight = humanData.weight;
+    this.diet = humanData.diet;
+}
+
     // Create Dino Objects
 
     // Create Human Object
+
 
     // Use IIFE to get human data from form
 
