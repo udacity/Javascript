@@ -36,3 +36,8 @@ function Dinosaur(dinoData) {
 
 
 // On button click, prepare and display infographic
+const compareButtonHandler = (event) => {
+    console.log("Button was clicked")
+}
+const compareButton = document.getElementById("btn");
+compareButton.addEventListener('click', compareButtonHandler);
