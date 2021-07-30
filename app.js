@@ -14,7 +14,6 @@ function Human(humanData) {
   this.name = humanData.name;
   this.feet = humanData.feet;
   this.inches = humanData.inches;
-  this.height = `${this.feet}" ${this.inches}'`;
   this.weight = humanData.weight;
   this.diet = humanData.diet;
 }
