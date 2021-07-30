@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/benjaminhyw/Udacity-Dinosaurs.git",
   "author": "benjaminhyw <benjaminhyw@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.12.3"
+  }
 }
