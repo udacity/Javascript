@@ -1,0 +1,14 @@
+{
+  "name": "Udacity-Dinosaurs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -a localhost -o"
+  },
+  "repository": "https://github.com/benjaminhyw/Udacity-Dinosaurs.git",
+  "author": "benjaminhyw <benjaminhyw@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.12.3"
+  }
+}
