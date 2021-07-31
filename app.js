@@ -1,8 +1,4 @@
-fetch("dino.json")
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-  });
+const dinoObjects = [];
 
 function loadJSON(callback) {
   var xobj = new XMLHttpRequest();
@@ -16,9 +12,16 @@ function loadJSON(callback) {
   xobj.send(null);
 }
 
-loadJSON((text) => {
-  console.log(text);
-});
+loadJSON(
+  // BEFLORE TODO: Below should not be an anonyomus function, create function for it instead
+  (text) => {
+    const dinos = JSON.parse(text).Dinos;
+    dinos.forEach((dinoObject) => {
+      dinoObjects.push(dinoObject);
+    });
+  }
+);
+
 // Create Dino Constructor
 function Dinosaur(dinoData) {
   this.species = dinoData.species;
@@ -85,6 +88,7 @@ const compareButtonHandler = (event) => {
 
   const humanObject = createHumanObject(getFormData());
   console.log(humanObject);
+  console.log(dinoObjects);
 };
 const compareButton = document.getElementById("btn");
 compareButton.addEventListener("click", compareButtonHandler);
