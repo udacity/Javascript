@@ -33,7 +33,6 @@ function Human(humanData) {
 }
 
 // Create Dino Objects
-
 // BEFLORE TODO: Rename
 loadJSON(
   // BEFLORE TODO: Below should not be an anonyomus function, create function for it instead
