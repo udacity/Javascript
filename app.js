@@ -12,16 +12,6 @@ function loadJSON(callback) {
   xobj.send(null);
 }
 
-loadJSON(
-  // BEFLORE TODO: Below should not be an anonyomus function, create function for it instead
-  (text) => {
-    const dinos = JSON.parse(text).Dinos;
-    dinos.forEach((dinoObject) => {
-      dinoObjects.push(dinoObject);
-    });
-  }
-);
-
 // Create Dino Constructor
 function Dinosaur(dinoData) {
   this.species = dinoData.species;
@@ -43,6 +33,17 @@ function Human(humanData) {
 }
 
 // Create Dino Objects
+
+// BEFLORE TODO: Rename
+loadJSON(
+  // BEFLORE TODO: Below should not be an anonyomus function, create function for it instead
+  (text) => {
+    const dinos = JSON.parse(text).Dinos;
+    dinos.forEach((dinoObject) => {
+      dinoObjects.push(new Dinosaur(dinoObject));
+    });
+  }
+);
 
 // Create Human Object
 const createHumanObject = (formData) => {
