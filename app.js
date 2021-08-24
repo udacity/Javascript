@@ -11,12 +11,12 @@
 
 
     // Create Dino Objects
-    // go through json array and make a dinosaur each
+
     const allDinosaurs = [];
-    // const dinoData = require("dino.json");
-    const dinoData = fetch('dino.json').then(response => response.json()).then(data => console.log(data));
-    const createDinoObjects = dinoData.Dinos.map(dino => new Dinosaur(dino.species, dino.weight, dino.height, dino.diet, dino.where, dino.when, dino.fact));
-    console.log(createDinoObjects);
+    const dinoData = fetch('dino.json').then(response => response.json()).then(data => {return data});
+    console.log(dinoData);
+    const dinosaurs = dinoData.map(dino => new Dinosaur(dino.species, dino.weight, dino.height, dino.diet, dino.where, dino.when, dino.fact));
+    console.log(dinosaurs);
 
 
     // Create Human Object
