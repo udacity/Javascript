@@ -28,11 +28,12 @@ const dinoData = fetch("dino.json")
           dino.fact
         )
     );
+    return dinosaurs;
   });
 
 // Create Human Object
 function Human(humanName, weight, feet, inches, diet) {
-  this.species = human;
+  this.species = "human";
   this.humanName = humanName;
   this.weight = weight;
   this.feet = feet;
@@ -50,7 +51,6 @@ function getHumanData() {
   const humanWeight = document.getElementById("weight").value;
   const humanDiet = document.getElementById("diet").value;
   const human = new Human(humanName, humanInches, humanFeet, humanWeight, humanDiet);
-  console.log(human);
   return human;
 };
 
@@ -66,6 +66,7 @@ button.addEventListener('click', event => {
   console.log("click");
   hideForm();
   getHumanData();
+  makeTiles(dinoData);
 });
 
 function getHeightInMeters(feet, inches) { return ((feet * .3048) + (inches * .0254)) };
@@ -100,7 +101,8 @@ function compareHeight(height, humanHeight) {
 
 // Generate Tiles for each Dino in Array
 
-function createTiles(human, dinosaurs) {
+function createTiles(dinosaurs) {
+  const dinoGrid = getElementById("grid");
   const tile = document.createElement('div');
   tile.classList.add('grid-item');
 
@@ -109,11 +111,15 @@ function createTiles(human, dinosaurs) {
     <img src="images/${animal.image}">
     `;
   const humanHeight = getHeightInMeters(human.feet, human.inches);
-  dinosaurs.map(dinosaur => { tile.appendChild(dinsoaur.species) })
-
-
+  dinosaurs.map(dinosaur => { tile.appendChild(dinsoaur.species) });
+  dinoGrid.appendChild(tile);
 
 };
+
+function makeTiles(creatureArray) {
+  console.log(creatureArray);
+  creatureArray.forEach(object => createTiles(object));
+}
 
         // Add tiles to DOM
 
