@@ -37,9 +37,11 @@ p {
 
 /* Grid Styles */
 #grid {
-    background: #fff url(images/tracks.png) no-repeat;
-    background-size: cover;
-    display: flex;
+    /* background: #fff url(images/tracks.png) no-repeat; */
+    /* background-size: cover; */
+    background-color: #28373B;
+    /* min-height: 50px; */
+    display: none;
     margin: 2em;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     flex-wrap: wrap;
