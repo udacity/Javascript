@@ -1,0 +1,17 @@
+First step: create form submission UX. 
+Transition parts:
+ - Inspo Wipe It Clean here https://speckyboy.com/page-transition-effects/ 
+ - Wipe in
+ - The form hides
+ - The grid is rendered
+ - Wipe out
+
+dino contructor
+    - generic constructor that reads from dino.json
+    - 
+
+
+OPtional functioality:
+
+    -   reset page with button
+    -   
