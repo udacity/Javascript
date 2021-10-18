@@ -15,8 +15,7 @@
 // }
 
 // const allDinos = createDinoArray().then(cleanDinos => {cleanDinos})
-// console.log(allDinos)
-
+// 
 // let dinos = [];
 // fetch("./dino.json")
 //   .then((res) => res.json())
@@ -49,6 +48,9 @@
 // console.log("cleanDinos")
 // console.log(cleanDinos)
 
+// Raw Dino data. Tried to read from external JSON with mentor assistance but didn't work for me, 
+// i.e. could log data to the console but not store as a variable without the use of async/await
+// which hasn't been covered in the course yet.
 
 const allDinos = [
     {
@@ -70,7 +72,7 @@ const allDinos = [
         "fact": "The largest known skull measures in at 5 feet long."
     },
     {
-        "species": "Anklyosaurus",
+        "species": "Ankylosaurus",
         "weight": 10500,
         "height": 55,
         "diet": "herbivore",
@@ -122,9 +124,17 @@ const allDinos = [
         "where": "Worldwide",
         "when": "Holocene",
         "fact": "All birds are living dinosaurs."
+    },
+    {
+        "species": "Tysonosaurus",
+        "weight": 0.00002,
+        "height": 0.034,
+        "diet": "injectable meat fluid",
+        "where": "Worldwide",
+        "when": "Holocene",
+        "fact": "REEEEEEEEEE"
     }
 ]
-
 
 
 // Create Dino Constructor
@@ -141,23 +151,44 @@ function Dino (saur) {
 
 Dino.prototype.randFact = function () {
     let rand = (Math.floor(Math.random() * (Object.keys(this).length - 1)) + 1);
-    let randFact = Object.keys(this)[rand];
-    console.log("A Fact About:")
-    console.log(this.species)
-    console.log(Object.keys(this)[rand])
-    console.log(allDinos[rand][randFact])
+    let randomFact = Object.keys(this)[rand];
+    console.log(randomFact)
+    console.log(this[randomFact])
+    // console.log("A Fact About:")
+    // console.log(this.species)
+    // console.log(Object.keys(this)[rand])
+    return (this[randomFact])
 }
 
+// Generate Dino grid squares in the DOM from raw data. 
+// Variable usage allows raw data to be modified without needing to modify the logic.
 
+const dinoSpeciesList = [];
+for(let dino of allDinos) {
+    dinoSpeciesList.push(dino.species)
+}
 
-let thisDino = "Pteranodon"
-thisDino = allDinos.find(element => element.species = thisDino)
-console.log(thisDino)
-
-
-let testosaurus = new Dino(thisDino);
-
-testosaurus.randFact()
+document.addEventListener("DOMContentLoaded", function() {
+    for(let species of dinoSpeciesList) {
+        
+        const gridSquare = document.createElement("div");
+        gridSquare.classList.add("grid-item");
+        
+        const node = document.createTextNode(species);
+        gridSquare.appendChild(node);
+        
+        const dinoPic = document.createElement("img")
+        dinoPic.src = `./images/${species}.png`;
+        gridSquare.appendChild(dinoPic);
+        
+        const dino = new Dino(allDinos.find(element => element.species === species));
+        const fact = document.createTextNode(dino.fact);
+        gridSquare.appendChild(fact)
+    
+        const grid = document.getElementById("grid");
+        grid.appendChild(gridSquare)
+    }
+})
 
 
     // Create Dino Objects

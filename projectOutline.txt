@@ -8,7 +8,7 @@ Transition parts:
 
 dino contructor
     - generic constructor that reads from dino.json
-    - 
+    - now for the html construction of divs
 
 
 OPtional functioality:
