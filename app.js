@@ -63,15 +63,6 @@ const allDinos = [
         "fact": "First discovered in 1889 by Othniel Charles Marsh"
     },
     {
-        "species": "Tyrannosaurus Rex",
-        "weight": 11905,
-        "height": 144,
-        "diet": "carnivore",
-        "where": "North America",
-        "when": "Late Cretaceous",
-        "fact": "The largest known skull measures in at 5 feet long."
-    },
-    {
         "species": "Ankylosaurus",
         "weight": 10500,
         "height": 55,
@@ -134,6 +125,16 @@ const allDinos = [
         "when": "Holocene",
         "fact": "REEEEEEEEEE"
     }
+    
+    // {
+        //     "species": "Tyrannosaurus Rex",
+        //     "weight": 11905,
+    //     "height": 144,
+    //     "diet": "carnivore",
+    //     "where": "North America",
+    //     "when": "Late Cretaceous",
+    //     "fact": "The largest known skull measures in at 5 feet long."
+    // },
 ]
 
 
@@ -152,8 +153,8 @@ function Dino (saur) {
 Dino.prototype.randFact = function () {
     let rand = (Math.floor(Math.random() * (Object.keys(this).length - 1)) + 1);
     let randomFact = Object.keys(this)[rand];
-    console.log(randomFact)
-    console.log(this[randomFact])
+    // console.log(randomFact)
+    // console.log(this[randomFact])
     // console.log("A Fact About:")
     // console.log(this.species)
     // console.log(Object.keys(this)[rand])
@@ -187,16 +188,78 @@ document.addEventListener("DOMContentLoaded", function() {
     
         const grid = document.getElementById("grid");
         grid.appendChild(gridSquare)
-    }
+    };
+
 })
 
 
-    // Create Dino Objects
+
+// Create Human Object
+
+function Human (input) {
+    this.name = input.name;
+    this.weight = input.weight;
+    this.height = input.height;
+    this.diet = input.diet;
+}
 
 
-    // Create Human Object
+
+
+
+// Remove form from screen
+// coming soon
+
+
+function handleForm(event) { 
+    // prevent page from refreshing upon form submission
+    event.preventDefault();
+    
+    const grid = document.getElementById("grid");
 
     // Use IIFE to get human data from form
+    (function() {
+        let user = {
+            name: document.getElementById("name").value,
+            feet: document.getElementById("feet").value,
+            inches: document.getElementById("inches").value,
+            weight: document.getElementById("weight").value,
+            diet: document.getElementById("diet").value
+        };
+        console.log(user)
+        theHuman = new Human(user)
+
+        const humanGridSquare = document.createElement("div");
+        humanGridSquare.classList.add("grid-item");
+        
+        const humanNode = document.createTextNode(user.name);
+        humanGridSquare.appendChild(humanNode);
+        
+        const humanPic = document.createElement("img")
+        humanPic.src = "./images/human.png";
+        humanGridSquare.appendChild(humanPic);
+        
+        const humanFact = document.createTextNode("Test");
+        humanGridSquare.appendChild(humanFact);
+
+        console.log(this.grid.childNodes);
+    
+        this.grid.insertBefore(humanGridSquare, this.grid.childNodes[7]); // Position 4 if using this.grid.children
+    } () );
+
+
+    // Prepare and display infographic
+    if (grid.style.display === "flex") {
+        grid.style.display = "none";
+        return;
+    };
+    grid.style.display = "flex";
+}; 
+
+var form = document.getElementById("dino-compare");
+form.addEventListener('submit', handleForm);
+
+    
 
 
     // Create Dino Compare Method 1
@@ -211,29 +274,4 @@ document.addEventListener("DOMContentLoaded", function() {
     // NOTE: Weight in JSON file is in lbs, height in inches.
 
 
-    // Generate Tiles for each Dino in Array
-  
-        // Add tiles to DOM
-
-    // Remove form from screen
-
-
-// On button click, prepare and display infographic
-
-
-var form = document.getElementById("dino-compare");
-function handleForm(event) { event.preventDefault(); } 
-form.addEventListener('submit', handleForm);
-
-
-let submitButton = document.getElementById("btn")
-
-submitButton.onclick = function () {
-    if (document.getElementById("grid").style.display === "flex") {
-        document.getElementById("grid").style.display = "none";
-        return;
-    };
-    document.getElementById("grid").style.display = "flex";
-
-}
 
