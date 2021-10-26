@@ -69,7 +69,7 @@ const allDinos = [
         "diet": "herbivore",
         "where": "North America",
         "when": "Late Cretaceous",
-        "fact": "Anklyosaurus survived for approximately 135 million years."
+        "fact": "Persisted as a species for approximately 135 million years."
     },
     {
         "species": "Brachiosaurus",
@@ -77,7 +77,7 @@ const allDinos = [
         "height": "372",
         "diet": "herbivore",
         "where": "North America",
-        "when": "Late Jurasic",
+        "when": "Late Jurassic",
         "fact": "An asteroid was named 9954 Brachiosaurus in 1991."
     },
     {
@@ -86,7 +86,7 @@ const allDinos = [
         "height": 79,
         "diet": "herbivore",
         "where": "North America, Europe, Asia",
-        "when": "Late Jurasic to Early Cretaceous",
+        "when": "Late Jurassic to Early Cretaceous",
         "fact": "The Stegosaurus had between 17 and 22 separate places and flat spines."
     },
     {
@@ -207,8 +207,6 @@ function Human (input) {
 
 
 
-// Remove form from screen
-// coming soon
 
 
 function handleForm(event) { 
@@ -244,7 +242,7 @@ function handleForm(event) {
 
         console.log(this.grid.childNodes);
     
-        this.grid.insertBefore(humanGridSquare, this.grid.childNodes[7]); // Position 4 if using this.grid.children
+        this.grid.insertBefore(humanGridSquare, this.grid.childNodes[5]); // Position 4 if using this.grid.children
     } () );
 
 
@@ -254,24 +252,38 @@ function handleForm(event) {
         return;
     };
     grid.style.display = "flex";
+
+    // Remove form from screen
+    var form = document.getElementById("dino-compare");
+    form.style.display = "none";
 }; 
 
 var form = document.getElementById("dino-compare");
 form.addEventListener('submit', handleForm);
 
     
+// - Output the following:
+    // - X of these dinos are likely to kill you!
+    // - Y of these dinos are likely to be edible for you!
+    // - Your best chance of survival is as a hunter / forager / scavenger.
+
+// Create Dino Compare Method 1
+// NOTE: Weight in JSON file is in lbs, height in inches. 
 
 
-    // Create Dino Compare Method 1
-    // NOTE: Weight in JSON file is in lbs, height in inches. 
-
-    
-    // Create Dino Compare Method 2
-    // NOTE: Weight in JSON file is in lbs, height in inches.
-
-    
-    // Create Dino Compare Method 3
-    // NOTE: Weight in JSON file is in lbs, height in inches.
+// Create Dino Compare Method 2
+// NOTE: Weight in JSON file is in lbs, height in inches.
 
 
+// Create Dino Compare Method 3
+// NOTE: Weight in JSON file is in lbs, height in inches.
 
+// array canKill = [], push if height ANd weight > human
+// array edible = [], push if human diet = carnivore AND bmi not obese (<30) (w/ h^2 * 703)
+    // AND you are at least 1% of the dino's weight AND you are at least half the dino's height
+
+// forager if you are herbivore
+// scavenger if carnivore but edible < 3 OR omnivore
+// hunter if carnivore AND edible > 2
+
+// let canKill = [];
