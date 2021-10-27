@@ -1,3 +1,6 @@
+# Note from the Dev
+This project has been tested with Live Server, a VSCode extension by Ritwick Dey.
+
 # Object Oriented Javascript 
 
 ## Student Instructions
