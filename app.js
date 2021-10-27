@@ -106,7 +106,6 @@ function Dino (saur, canKill, edible, competitive) {
 Dino.prototype.randFact = function () {
     let rand = (Math.floor(Math.random() * (Object.keys(this).length - 1)) + 1);
     let randomFact = Object.keys(this)[rand];
-    console.log(randomFact)
 
     // Make human readable depending on fact chosen
     if(randomFact === "weight") {
@@ -179,9 +178,6 @@ function handleForm(event) {
             diet: document.getElementById("diet").value
         };
         theHuman = new Human(formData)
-        console.log("formdata height")
-        console.log(theHuman.feet)
-        console.log(theHuman.inches)
 
 
         // Generate Dino grid squares in the DOM from raw data. 
@@ -214,19 +210,9 @@ function handleForm(event) {
                 (theHuman.weight >= dino.weight * 0.01) && 
                 (theHuman.height >= dino.height * 0.5)
                 ) {
-                console.log("theHUman diet")
-                console.log(theHuman.diet)
-                console.log("theHuman bmi")
-                console.log(theHuman.findBMI())
-                console.log("weight criterion")
-                console.log(theHuman.weight >= dino.weight * 0.01)
-                console.log("height criterion")
-                console.log(theHuman.height >= dino.height * 0.5)
                 edible.push(dino.species)
             }
         };
-        console.log("edible array")
-        console.log(edible)
 
 
         // Dino Compare Method 3, i.e do you have the same diet and will therefore compete for resources?
