@@ -1,0 +1,19 @@
+{
+  "name": "dinosaurs_project",
+  "version": "1.0.0",
+  "description": "Project on Dinosaurs for Udacity's Intermediate Javascript Course",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisdarden/Dinosaurs-Project.git"
+  },
+  "author": "Chris Darden",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisdarden/Dinosaurs-Project/issues"
+  },
+  "homepage": "https://github.com/chrisdarden/Dinosaurs-Project#readme"
+}
