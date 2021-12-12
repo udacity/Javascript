@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/chrisdarden/Dinosaurs-Project/issues"
   },
-  "homepage": "https://github.com/chrisdarden/Dinosaurs-Project#readme"
+  "homepage": "https://github.com/chrisdarden/Dinosaurs-Project#readme",
+  "dependencies": {
+    "quokka-treasure-chest": "^1.0.2"
+  }
 }

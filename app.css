@@ -1,7 +1,8 @@
 /* General Styles */
+
 body {
     background: rgb(111, 208, 224);
-    background: linear-gradient(0deg,rgb(111, 208, 224) 0%, rgb(171, 228, 167) 100%);
+    background: linear-gradient(0deg, rgb(111, 208, 224) 0%, rgb(171, 228, 167) 100%);
     font-family: 'Open Sans', sans-serif;
     text-align: center;
     min-height: 100vh;
@@ -35,13 +36,15 @@ p {
     font-weight: 100;
 }
 
+
 /* Grid Styles */
+
 #grid {
     background: #fff url(images/tracks.png) no-repeat;
     background-size: cover;
     display: flex;
     margin: 2em;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     flex-wrap: wrap;
 }
 
@@ -51,39 +54,39 @@ p {
     width: 100%;
 }
 
-.grid-item:nth-child(1){
+.grid-item:nth-child(1) {
     background: #009687f5;
 }
 
-.grid-item:nth-child(2){
+.grid-item:nth-child(2) {
     background: #dc7657f5;
 }
 
-.grid-item:nth-child(3){
+.grid-item:nth-child(3) {
     background: #4bb3c1fa;
 }
 
-.grid-item:nth-child(4){
+.grid-item:nth-child(4) {
     background: #fac069f9;
 }
 
-.grid-item:nth-child(5){
+.grid-item:nth-child(5) {
     background: #67a866f9;
 }
 
-.grid-item:nth-child(6){
+.grid-item:nth-child(6) {
     background: #b94169fa;
 }
 
-.grid-item:nth-child(7){
+.grid-item:nth-child(7) {
     background: #7f62b3fa;
 }
 
-.grid-item:nth-child(8){
+.grid-item:nth-child(8) {
     background: #9fc376f9;
 }
 
-.grid-item:nth-child(9){
+.grid-item:nth-child(9) {
     background: #677bcbfa;
 }
 
@@ -104,19 +107,21 @@ p {
 }
 
 .grid-item p {
-    background: rgba(000,000,000, .3);
+    background: rgba(000, 000, 000, .3);
     position: absolute;
     bottom: 0;
     width: 100%;
     padding: 0.8em 0.8em 1.8em;
-    margin:0;
+    margin: 0;
     box-sizing: border-box;
     font-size: 1.2em;
     font-weight: 600;
     color: #fff;
 }
 
+
 /* Form Styles */
+
 .form-container {
     background: #eee;
     padding: 1.3em;
@@ -167,7 +172,9 @@ select {
     cursor: pointer;
 }
 
+
 /* Footer */
+
 .fine-print {
     display: block;
     font-size: 0.7em;
