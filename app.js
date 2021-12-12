@@ -103,8 +103,6 @@ function Dinosaur(species, weight, height, diet, where, when, fact) {
 
 }
 
-
-
 // Create Dino Objects
 
 const dinosaur = data.map((data) =>
