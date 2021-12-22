@@ -1,6 +1,6 @@
 # Object Oriented Javascript 
 
-## Dino Dashboards
+## Dino Dashboard
 
 This project creates a dinosaur infographic. In this project I tried to practice object oriented JavaScript.
 
@@ -10,6 +10,6 @@ The repo is written in plain Javascript. No routes are needed, all DOM changes a
 
 ## View the Dashboard
 
-- clone the respository locally
-- run a local server, for example [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb/related?hl=en)
-- Have fun interactiong with the dashboard!
+- Clone the respository locally
+- Run a local server, for example [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb/related?hl=en)
+- Have fun interacting with the dashboard!
