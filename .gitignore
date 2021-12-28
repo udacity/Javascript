@@ -1,0 +1,21 @@
+# Build directory
+/build
+
+# Misc
+.DS_Store
+.idea
+
+# Dependencies
+*/node_modules/
+/.pnp
+.pnp.js
+
+# Asset files
+assets/*
+!assets/forms
+
+# Sendgrid
+backend/env/sendgrid.env
+
+# Testing
+/coverage
