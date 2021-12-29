@@ -8,12 +8,14 @@
     // Create Human Object
     const createHuman = () => {
         const name = document.getElementById('name').value;
+        const weight = document.getElementById('weight').value;
         const heightFeet = document.getElementById('feet').value;
         const heightInches = document.getElementById('inches').value;
         const diet = document.getElementById('diet').value;
         const height = heightFeet * 12 + heightInches;
         return {
             name,
+            weight,
             height,
             diet,
         }
@@ -57,7 +59,11 @@
         form.style.display = 'none';
         dinoGrid.style.display = null;
     };
-    compareButton.addEventListener('click', showCompareGrid);
+    compareButton.addEventListener('click', () => {
+        showCompareGrid();
+        const human = createHuman();
+        console.log('human ', human);
+    });
 
 
 // On button click, prepare and display infographic
