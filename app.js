@@ -86,19 +86,19 @@ function Dinosaur(species, weight, height, diet, where, when, fact) {
     this.where = where;
     this.when = when;
     this.fact = fact;
-    this.getHeightDif = function() {       
+    // this.getHeightDif = function() {       
         
-        if (human.height < this.height) {
-            console.log("human shorter")
-            return `${human.name} is ${this.height - human.height} inches shorter than ${this.species}!`;
-        } else(human.height > this.height) 
-        {
-            console.log("human taller")
-            return `${human.name} is ${this.height - human.height} inches taller than ${this.species}!`;
+    //     if (human.height < this.height) {
+    //         console.log("human shorter")
+    //         return `${human.name} is ${this.height - human.height} inches shorter than ${this.species}!`;
+    //     } else(human.height > this.height) 
+    //     {
+    //         console.log("human taller")
+    //         return `${human.name} is ${this.height - human.height} inches taller than ${this.species}!`;
     
-        }
+    //     }
     
-    };
+    // };
     
 
 }
@@ -115,42 +115,36 @@ const dinosaur = data.map((data) =>
         data.when,
         data.fact
     ))
-
-
-    Dinosaur.prototype.compareHeight= function compareHeight(human){
+Dinosaur.prototype.compareHeight= function compareHeight(human){
         
 
-        if(human.height<this.weight){
-           return `${human.name} is ligher than this dinosaur.`
+        if(human.height<this.height){
+           return `${human.name} is shorter than this dinosaur.`
        }
        else{
-           return `${human.name} is heavier than this dinosaur!`
+           return `${human.name} is taller than this dinosaur!`
        }
       
-   }
+}
 
-   Dinosaur.prototype.compareWeight= function compareWeight(human){
-        
- 
+Dinosaur.prototype.compareWeight= function compareWeight(human) {  
     if(human.weight<this.weight){
        return `${human.name} weighs less than this dinosaur.`
    }
    else{
        return `${human.name} weighs more than this dinosaur!`
    }
-  
 }
 
 Dinosaur.prototype.compareDiet= function compareDiet(human){
 
-    if(human.diet!==this.diet){
-       return 'Your diet is '+ human.diet
+    if(human.diet !== this.diet){
+       return 'Your diet is '+ human.diet + " whereas the " + this.species + "'s diet is " + this.diet + "."
    }
-  
+   else if (human.diet == this.diet) {
+       return 'You have the same diet as ' + this.species + "."
+   } // same
 }
-
-
-
 // Generate Tiles for each Dino in Array
 function getHumanInfo () {
     const name = document.getElementById("name").value
@@ -164,57 +158,131 @@ function getHumanInfo () {
     return human
 }
 
+function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+  
+  
 const dinoTiles = function() {
+    console.log("dino tiles")
     let human = getHumanInfo()
- 
     const shuffledboard = dinosaur.slice(0, 4).concat(human).concat(dinosaur.slice(4, 8))
-    
-
     let grid = document.getElementById("grid")
+
 
     // loops over compiled results array and generates tiles
     // Add tiles to DOM
     for (var i = 0; i < shuffledboard.length; i++) {
-        
-        if (i == 4) {
-            
-            grid.innerHTML += `
-        <div class="grid-item">
-        <h3>${human.species}</h3>
-        <img src="images/${(human.species.toLowerCase())}.png" alt="image of ${human.species}">
-        <p>${human.name}
-        ${human.height}
-        ${human.weight}
-        ${human.diet}</p>
-        </div>
+        console.log("for loop")
 
-    `
-        } else {
-            
-            
+        if (i !== 4 && shuffledboard[i].species !== "Pigeon") {
+       
+            const rndInt = randomIntFromInterval(1, 4)
+            console.log(rndInt)
+
+            switch (rndInt) {
+            case 1:
+            console.log("Case 1: Fact")
             grid.innerHTML += `
         <div class="grid-item">
         <h3>${shuffledboard[i].species}</h3>
         <img src="images/${(shuffledboard[i].species.toLowerCase())}.png" alt="image of ${shuffledboard[i].species}">
-        <p>${shuffledboard[i].fact}
-       ${shuffledboard[i].compareHeight(human)}
-       ${shuffledboard[i].compareWeight(human)}
-       ${shuffledboard[i].compareDiet(human)}
+        <p>
+        ${shuffledboard[i].fact}
         </p>
+        </div>
+        `
+        break;
+
+
+        case 2:
+            console.log("Case 2: compareHeight")
+            grid.innerHTML += `
+        <div class="grid-item">
+        <h3>${shuffledboard[i].species}</h3>
+        <img src="images/${(shuffledboard[i].species.toLowerCase())}.png" alt="image of ${shuffledboard[i].species}">
+        <p>
+        ${shuffledboard[i].compareHeight(human)}
+        </p>
+        </div>`
+        
+        break;
+
+        case 3:
+            console.log("Case 3: compareWeight")
+            grid.innerHTML += `
+            <div class="grid-item">
+            <h3>${shuffledboard[i].species}</h3>
+            <img src="images/${(shuffledboard[i].species.toLowerCase())}.png" alt="image of ${shuffledboard[i].species}">
+            <p>
+            ${shuffledboard[i].compareWeight(human)}
+            </p>
+            </div>`
+            
+        break;
+
+        case 4:
+            console.log("Case 4: compareDiet")
+            grid.innerHTML += `
+     <div class="grid-item">
+    <h3>${shuffledboard[i].species}</h3>
+    <img src="images/${(shuffledboard[i].species.toLowerCase())}.png" alt="image of ${shuffledboard[i].species}">
+    <p>
+    ${shuffledboard[i].compareDiet(human)}
+    </p>
+    </div>
+    `
+    break;
+            }
+        }
+
+        else if (i == 4) {   
+        grid.innerHTML += `
+        <div class="grid-item">
+        <h3>${human.name}</h3>
+        <img src="images/${(human.species.toLowerCase())}.png" alt="image of ${human.species}">
         </div>
 
     `
         }
+
+        else if (shuffledboard[i].species == "Pigeon") {
+            
+            grid.innerHTML += `
+        <div class="grid-item">
+        <h3><h3>${shuffledboard[i].species}</h3></h3>
+        <img src="images/${(shuffledboard[i].species.toLowerCase())}.png" alt="image of ${shuffledboard[i].species}">
+        <p>${shuffledboard[i].fact}</p>
+        </div>
+
+    `
+        }
+
+      
     }
-    
+    //         grid.innerHTML += `
+    //     <div class="grid-item">
+    //     <h3>${shuffledboard[i].species}</h3>
+    //     <img src="images/${(shuffledboard[i].species.toLowerCase())}.png" alt="image of ${shuffledboard[i].species}">
+    //     <p>
+        
+     
+    //     ${shuffledboard[i].fact}
+    //     ${shuffledboard[i].compareHeight(human)}
+    //     ${shuffledboard[i].compareWeight(human)}
+    //     ${shuffledboard[i].compareDiet(human)}        
+    //     </p>
+    //     </div>
+
+    // `
     
 }
-
+    
 
 button.addEventListener("click", function(e) {
     e.preventDefault();
     document.getElementById("dino-compare").style.display = "none";
     dinoTiles()
-    debugger
+    
 })
 
