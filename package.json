@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "infographic about dinosaurs!",
   "scripts": {
-    "start": "parcel src/index.html"
+    "start:dev": "nodemon server -e html,js,scss"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/felicityandherdragon/project-dino#readme",
   "dependencies": {
-    "parcel": "^2.6.2"
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }
