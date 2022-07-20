@@ -1,9 +1,15 @@
-// All the selectors
+/**
+ * All the selectors
+ */
 const submitButton = document.getElementById('btn');
 const dinoGrid = document.getElementById('grid');
 const dinoForm = document.querySelector('form');
 
-// utils
+/**
+ * @description fetch raw dino data from .json file
+ * @param {string} the api endpoint to fetch raw dino data
+ * @returns raw dino data
+ */
 async function fetchDinos(url) {
     try {
         const res = await fetch(url);
@@ -16,26 +22,27 @@ async function fetchDinos(url) {
 }
 
 // Create Dino Constructor
-function dinoConstructor() {
 
-}
 
 // Create Dino Objects
 
 
-// Create Human Object
-function humanGenerator(obj) {
-    return Object.assign({}, obj);
-}
+/**
+ * @description get human data from the form
+ * @returns human object based on user input
+ */
+function getHumanData(formData) {
+    const raw  = Object.fromEntries(new FormData(formData).entries());
+    const formattedHeight = Number(raw.feet) * 12 + Number(raw.inches);
+    const formattedWeight = Number(raw.weight);
 
-// Use IIFE to get human data from form
-// let humanObj = (humanGenerator(
-//     function () {
-//         //return the data needed for the human object
-//         const data = Object.fromEntries(new FormData(dinoForm).entries());
-//         return data;
-//     }
-// )());
+    return {
+        diet: raw.diet,
+        height: formattedHeight,
+        weight: formattedWeight,
+        name: raw.name
+    }
+}
 
 
 // Create Dino Compare Method 1
@@ -63,14 +70,9 @@ function generateTiles() {
 // On form submit
 dinoForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.target).entries());
-    console.log('formdata', data);
+    const humanInfo = getHumanData(e.target);
+    console.log('humanInfo', humanInfo);
     dinoForm.setAttribute('hidden', 'true')
     const dinos = await fetchDinos('/api/dinos');
     console.log(dinos);
-})
-
-// On button click, prepare and display infographic
-submitButton.addEventListener('click', () => {
-    console.log('TBA');
 })
